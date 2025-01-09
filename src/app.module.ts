@@ -1,8 +1,11 @@
-import { Module } from '@nestjs/common';
+import { Logger, Module } from '@nestjs/common';
+import { DatabaseModule } from '@infrastructure/database/mongo/database.module';
 
 @Module({
-  imports: [],
+  imports: [
+    DatabaseModule
+  ],
   controllers: [],
-  providers: [],
+  providers: [Logger],
 })
 export class AppModule {}
