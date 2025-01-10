@@ -15,6 +15,12 @@ export class NasaPhotoService implements NasaPhotoRepository {
       NASA_ENDPOINT,
       NASA_API_KEY,
     } = envs;
-    return this.httpService.get<NasaPhoto>(`${NASA_ENDPOINT}?api_key=${NASA_API_KEY}`);
+    const response = await this.httpService.get<NasaPhoto>(NASA_ENDPOINT, {
+      params: {
+        api_key: NASA_API_KEY,
+      }
+    });
+
+    return NasaPhoto.toEntity(response);
   }
 }
