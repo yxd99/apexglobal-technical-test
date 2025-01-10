@@ -1,5 +1,5 @@
 import { MongooseModuleOptions } from "@nestjs/mongoose";
-import { envs } from "../../config/envs";
+import { envs } from "@config/envs";
 
 export function getMongoConfig(): MongooseModuleOptions {
   return {

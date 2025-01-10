@@ -1,5 +1,5 @@
 import { Controller, Get, Post, Body, Param, NotFoundException, BadRequestException, Put, Delete } from '@nestjs/common';
-import { Product } from '../../domain/entities/product.entity';
+import { Product } from '@domain/entities/product.entity';
 import { CreateProductDto, UpdateProductDto } from '@interfaces/dto/product.dto';
 import { ProductUseCase } from '@application/use-cases/product.usecase';
 
