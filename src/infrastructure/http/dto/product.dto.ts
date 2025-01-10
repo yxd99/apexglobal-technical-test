@@ -1,4 +1,4 @@
-import { IsString, IsNumber, IsOptional, IsNotEmpty } from 'class-validator';
+import { IsString, IsNumber, IsNotEmpty, IsPositive, Min } from 'class-validator';
 import { PartialType } from "@nestjs/swagger";
 
 export class CreateProductDto {
@@ -11,13 +11,16 @@ export class CreateProductDto {
   name: string;
 
   @IsString()
-  @IsOptional()
   description?: string;
 
   @IsNumber()
+  @IsPositive()
+  @Min(1)
   price: number;
 
   @IsNumber()
+  @IsPositive()
+  @Min(1)
   stock: number;
 }
 

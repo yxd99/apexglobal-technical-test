@@ -1,4 +1,4 @@
-import { UpdateProductDto } from "@interfaces/dto/product.dto";
+import { UpdateProductDto } from "@infrastructure/http/dto/product.dto";
 import { Product } from "@domain/entities/product.entity";
 import { ProductRepository } from "@domain/repositories/product.repository";
 import { Inject } from "@nestjs/common";

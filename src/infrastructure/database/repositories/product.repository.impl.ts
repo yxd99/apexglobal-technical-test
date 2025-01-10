@@ -16,24 +16,24 @@ export class ProductRepositoryImpl implements ProductRepository {
   }
 
   async findAll(): Promise<Product[]> {
-    const products = await this.productModel.find({ is_deleted: false }).exec();
+    const products = await this.productModel.find({ is_deleted: false });
     return products.map(this.toEntity);
   }
 
   async findOne(productId: string): Promise<Product | null> {
-    const product = await this.productModel.findOne({ product_id: productId, is_deleted: false }).exec();
+    const product = await this.productModel.findOne({ product_id: productId, is_deleted: false });
     return product ? this.toEntity(product) : null;
   }
 
   async update(productId: string, product: Partial<Product>): Promise<Product | null> {
     const updatedProduct = await this.productModel
       .findOneAndUpdate({ product_id: productId }, product, { new: true })
-      .exec();
+      ;
     return updatedProduct ? this.toEntity(updatedProduct) : null;
   }
 
   async delete(productId: string): Promise<void> {
-    await this.productModel.updateOne({ product_id: productId }, { is_deleted: true }).exec();
+    await this.productModel.findOneAndUpdate({ product_id: productId }, { is_deleted: true });
   }
 
   private toEntity(doc: ProductDocument): Product {

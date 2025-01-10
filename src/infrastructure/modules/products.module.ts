@@ -1,9 +1,9 @@
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { ProductsController } from '@interfaces/controllers/products.controller';
+import { ProductsController } from '@infrastructure/http/controllers/products.controller';
 import { ProductSchema } from '@infrastructure/database/models/product.model';
 import { ProductRepositoryImpl } from '@infrastructure/database/repositories/product.repository.impl';
-import { ProductUseCase } from '@application/use-cases/product.usecase';
+import { ProductUseCase } from '@application/use-cases/product.use-case';
 
 @Module({
   imports: [
@@ -11,11 +11,11 @@ import { ProductUseCase } from '@application/use-cases/product.usecase';
   ],
   controllers: [ProductsController],
   providers: [
+    ProductUseCase,
     {
       provide: 'ProductRepository',
       useClass: ProductRepositoryImpl,
     },
-    ProductUseCase,
   ],
 })
 export class ProductsModule {}
