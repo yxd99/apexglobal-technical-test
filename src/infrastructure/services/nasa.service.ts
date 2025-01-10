@@ -2,7 +2,7 @@ import { NasaPhoto } from "@app/domain/entities/nasa-photo.entity";
 import { NasaPhotoRepository } from "@app/domain/repositories/nasa-photo.repository";
 import { Injectable } from "@nestjs/common";
 import { envs } from "@config/envs";
-import { HttpClientService } from "../http/http-client.service";
+import { HttpClientService } from "@infrastructure/http/http-client.service";
 
 @Injectable()
 export class NasaPhotoService implements NasaPhotoRepository {

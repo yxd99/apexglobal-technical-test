@@ -11,7 +11,7 @@ export class ResponseInterceptor implements NestInterceptor {
       .pipe(
         map((data) => {
           const response = context.switchToHttp().getResponse();
-          const statusCode = data ? response.statusCode : 204; 
+          const statusCode = response.statusCode; 
           const name = getReasonPhrase(statusCode);
           
           const result = {

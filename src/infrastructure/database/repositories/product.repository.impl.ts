@@ -37,14 +37,14 @@ export class ProductRepositoryImpl implements ProductRepository {
   }
 
   private toEntity(doc: ProductDocument): Product {
-    return new Product(
-      doc.product_id,
-      doc.name,
-      doc.description,
-      doc.price,
-      doc.stock,
-      doc.created_at,
-      doc.updated_at,
-    );
+    return new Product({
+      product_id: doc.product_id,
+      name: doc.name,
+      description: doc.description,
+      price: doc.price,
+      stock: doc.stock,
+      created_at: doc.created_at,
+      updated_at: doc.updated_at,
+    });
   }
 }
