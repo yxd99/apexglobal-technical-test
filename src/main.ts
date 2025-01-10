@@ -22,7 +22,7 @@ async function bootstrap() {
   swagger.setup(app);
   app.setGlobalPrefix(apiInfo.PREFIX);
   app.useGlobalInterceptors(new ResponseInterceptor());
-  app.useGlobalFilters(new ErrorInterceptor());
+  // app.useGlobalFilters(new ErrorInterceptor());
   
   await app.listen(envs.PORT, async () => {
     Logger.log(`Server is running on ${envs.PORT} port`);

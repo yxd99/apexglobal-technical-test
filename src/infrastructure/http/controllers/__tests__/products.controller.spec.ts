@@ -129,6 +129,7 @@ describe('ProductsController', () => {
     });
 
     it('should throw an error if product not found', async () => {
+      jest.spyOn(mockModel, 'findOne').mockImplementationOnce(() => Promise.resolve(null));
       try {
         await controller.findOne('123');
       } catch (error) {
@@ -148,6 +149,7 @@ describe('ProductsController', () => {
     });
 
     it('should throw an error if product not found', async () => {
+      jest.spyOn(mockModel, 'findOne').mockImplementationOnce(() => Promise.resolve(null));
       try {
         await controller.update('123', {
           product_id: '123',
@@ -169,6 +171,7 @@ describe('ProductsController', () => {
     });
 
     it('should throw an error if product not found', async () => {
+      jest.spyOn(mockModel, 'findOne').mockImplementationOnce(() => Promise.resolve(null));
       try {
         await controller.delete('123');
       } catch (error) {

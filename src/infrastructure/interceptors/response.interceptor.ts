@@ -1,7 +1,7 @@
-import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Logger } from '@nestjs/common';
+import { Injectable, NestInterceptor, ExecutionContext, CallHandler, Logger, HttpException } from '@nestjs/common';
 import { getReasonPhrase } from 'http-status-codes';
-import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, throwError } from 'rxjs';
+import { catchError, map } from 'rxjs/operators';
 
 @Injectable()
 export class ResponseInterceptor implements NestInterceptor {
@@ -21,6 +21,14 @@ export class ResponseInterceptor implements NestInterceptor {
           }
 
           return result;
+        }),
+        catchError((error) => {
+          const response = {
+            code: error.status,
+            name: getReasonPhrase(error.status),
+            data: error.response?.message,
+          }
+          return throwError(() => new HttpException(response, error.status));
         }),
       );
   }
