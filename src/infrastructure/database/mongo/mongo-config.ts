@@ -1,9 +1,9 @@
 import { MongooseModuleOptions } from "@nestjs/mongoose";
-import { envs } from "../../config/envs";
-import { Logger } from "@nestjs/common";
+import { envs } from "@config/envs";
 
 export function getMongoConfig(): MongooseModuleOptions {
   return {
+    autoCreate: true,
     auth: {
       username: envs.DB_USER,
       password: envs.DB_PASSWORD,

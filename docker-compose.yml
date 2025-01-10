@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+  db:
+    container_name: ${DB_NAME}
+    image:  mongo:7.0.16-jammy
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${DB_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${DB_PASSWORD}
+    volumes:
+      - ./docker/mongo:/data/db
+      - ./logs:/var/log/mongodb
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: "3"
+    command: mongod --quiet > /var/log/mongodb/mongodb.log 2>&1
+    restart: always
+  app:
+    depends_on:
+      - db
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: apexglobal-technical-test
+    environment:
+      PORT: ${PORT}
+      DB_HOST: db
+      ENV: production
+    ports:
+      - '3000:${PORT}'
+    volumes:
+      - ./docker/app:/app/src
+    restart: always
+    
