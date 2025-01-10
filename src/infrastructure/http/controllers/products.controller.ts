@@ -1,6 +1,6 @@
-import { Controller, Get, Post, Body, Param, NotFoundException, BadRequestException, Delete, Patch } from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, NotFoundException, BadRequestException, Delete, Patch, Query } from '@nestjs/common';
 import { Product } from '@domain/entities/product.entity';
-import { CreateProductDto, UpdateProductDto } from '@infrastructure/http/dto/product.dto';
+import { CreateProductDto, ProductPaginationDto, UpdateProductDto } from '@infrastructure/http/dto/product.dto';
 import { ProductUseCase } from '@application/use-cases/product.use-case';
 import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
 import { PostProductCreatedSchema } from '@infrastructure/http/docs/product/created.schema';
@@ -37,8 +37,8 @@ export class ProductsController {
 
   @ApiOkResponse(GetProductFindAllOkSchema)
   @Get()
-  async findAll() {
-    return this.productUseCase.findAll();
+  async findAll(@Query() productPaginationDto: ProductPaginationDto) {
+    return this.productUseCase.findAll(productPaginationDto);
   }
 
   @ApiOkResponse(GetProductFindOneOkSchema)

@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { Product } from '@domain/entities/product.entity';
 import { ProductRepository } from '@domain/repositories/product.repository';
 import { ProductDocument } from '@infrastructure/database/models/product.model';
+import { ProductPaginationDto } from '@infrastructure/http/dto/product.dto';
 
 @Injectable()
 export class ProductRepositoryImpl implements ProductRepository {
@@ -15,8 +16,9 @@ export class ProductRepositoryImpl implements ProductRepository {
     return this.toEntity(savedProduct);
   }
 
-  async findAll(): Promise<Product[]> {
-    const products = await this.productModel.find({ is_deleted: false });
+  async findAll(productPaginationDto:  ProductPaginationDto): Promise<Product[]> {
+    const { page, size } = productPaginationDto;
+    const products = await this.productModel.find({ is_deleted: false }).skip((page - 1) * size).limit(size);
     return products.map(this.toEntity);
   }
 

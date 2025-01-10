@@ -1,4 +1,4 @@
-import { UpdateProductDto } from "@infrastructure/http/dto/product.dto";
+import { ProductPaginationDto, UpdateProductDto } from "@infrastructure/http/dto/product.dto";
 import { Product } from "@domain/entities/product.entity";
 import { ProductRepository } from "@domain/repositories/product.repository";
 import { Inject } from "@nestjs/common";
@@ -12,8 +12,8 @@ export class ProductUseCase {
     return this.productRepository.create(product);
   }
 
-  async findAll(): Promise<Product[]> {
-    return this.productRepository.findAll();
+  async findAll(productPaginationDto: ProductPaginationDto): Promise<Product[]> {
+    return this.productRepository.findAll(productPaginationDto);
   }
 
   async findOne(productId: string): Promise<Product | null> {
