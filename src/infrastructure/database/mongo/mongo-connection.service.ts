@@ -18,7 +18,12 @@ export class MongoConnectionService implements OnModuleInit {
       this.logger.log('MongoDB disconnected');
     });
 
-    const connection = mongoose.connection.readyState;
-    this.logger.log(`MongoDB connection state: ${connection}`);
+    this.logger.log({ totalConnections: mongoose.connections.length });
+    mongoose.connections.forEach((connection, index) => {
+      console.log({
+        index,
+        connection
+      })
+    });
   }
 }
