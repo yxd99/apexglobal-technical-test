@@ -1,6 +1,6 @@
 import { ModuleMocker } from 'jest-mock';
 import { Test, TestingModule } from '@nestjs/testing';
-import { ProductsController } from '../products.controller';
+import { ProductsController } from '@infrastructure/http/controllers/products.controller';
 import { ProductRepositoryImpl } from '@infrastructure/database/repositories/product.repository.impl';
 import { ProductUseCase } from '@application/use-cases/product.use-case';
 import { getModelToken } from '@nestjs/mongoose';
