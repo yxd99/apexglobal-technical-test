@@ -10,6 +10,6 @@ export function getMongoConfig(): MongooseModuleOptions {
       password: envs.DB_PASSWORD,
     },
     dbName: envs.DB_NAME,
-    uri: `mongodb://${envs.DB_HOST}:${envs.DB_PORT}`,
+    uri: `${envs.DB_CONNECTION_SCHEMA}://${envs.DB_HOST}:${envs.DB_PORT}`,
   };
 }
