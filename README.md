@@ -1,3 +1,6 @@
+> [!IMPORTANT]  
+> Project is deployed [here](https://apexglobal-technical-test.onrender.com/api)
+> 
 # ApexGlobal Technical Test Repository
 
 ---
