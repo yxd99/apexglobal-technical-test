@@ -1,14 +1,14 @@
-import { DocumentBuilder, SwaggerModule } from "@nestjs/swagger";
-import { INestApplication } from "@nestjs/common";
+import { INestApplication } from '@nestjs/common';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-import * as apiInfo from "./api-info";
+import * as apiInfo from './api-info';
 
 const config = new DocumentBuilder()
   .setTitle(apiInfo.TITLE)
   .setDescription(apiInfo.DESCRIPTION)
   .setVersion(apiInfo.VERSION)
   .addTag(apiInfo.PREFIX)
-  .addBearerAuth()
+  .addBearerAuth();
 
 apiInfo.SERVERS.forEach((server) => {
   config.addServer(server.host, server.description);

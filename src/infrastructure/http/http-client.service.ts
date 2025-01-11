@@ -1,6 +1,7 @@
 import { Injectable } from '@nestjs/common';
-import { HttpClient } from '@domain/repositories/http-client.repository';
 import axios, { AxiosRequestConfig } from 'axios';
+
+import { HttpClient } from '@domain/repositories/http-client.repository';
 
 @Injectable()
 export class HttpClientService implements HttpClient {

@@ -1,5 +1,5 @@
-import { Injectable, Logger, OnModuleInit } from "@nestjs/common";
-import mongoose from "mongoose";
+import { Injectable, Logger, OnModuleInit } from '@nestjs/common';
+import mongoose from 'mongoose';
 
 @Injectable()
 export class MongoConnectionService implements OnModuleInit {

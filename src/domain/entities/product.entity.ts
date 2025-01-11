@@ -1,31 +1,43 @@
 interface ProductProps {
-  product_id: string;
+  productId: string;
   name: string;
   description: string;
   price: number;
   stock: number;
-  created_at: Date;
-  updated_at: Date;
+  createdAt: Date;
+  updatedAt: Date;
 }
 
 export class Product {
   public product_id: string;
+
   public name: string;
+
   public description: string;
+
   public price: number;
+
   public stock: number;
+
   public created_at: Date;
+
   public readonly updated_at: Date;
 
-  constructor(
-    { product_id, name, description, price, stock, created_at, updated_at }: ProductProps,
-  ) {
-    this.product_id = product_id;
+  constructor({
+    productId,
+    name,
+    description,
+    price,
+    stock,
+    createdAt,
+    updatedAt,
+  }: ProductProps) {
+    this.product_id = productId;
     this.name = name;
     this.description = description;
     this.price = price;
     this.stock = stock;
-    this.created_at = created_at;
-    this.updated_at = updated_at;
+    this.created_at = createdAt;
+    this.updated_at = updatedAt;
   }
 }

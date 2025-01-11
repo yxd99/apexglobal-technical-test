@@ -6,10 +6,6 @@ export class NasaPhoto {
   ) {}
 
   static toEntity(nasaPhoto: NasaPhoto): NasaPhoto {
-    return new NasaPhoto(
-      nasaPhoto.explanation,
-      nasaPhoto.hdurl,
-      nasaPhoto.url,
-    );
+    return new NasaPhoto(nasaPhoto.explanation, nasaPhoto.hdurl, nasaPhoto.url);
   }
 }

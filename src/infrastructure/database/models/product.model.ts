@@ -2,33 +2,33 @@ import { Schema, Document } from 'mongoose';
 
 export const ProductSchema = new Schema(
   {
-    product_id: { 
+    product_id: {
       type: String,
       required: true,
-      unique: true
+      unique: true,
     },
-    name: { 
+    name: {
       type: String,
-      required: true
+      required: true,
     },
-    description: { 
+    description: {
       type: String,
-      required: true
+      required: true,
     },
-    price: { 
+    price: {
       type: Number,
-      required: true
+      required: true,
     },
     stock: {
       type: Number,
-      required: true
+      required: true,
     },
     is_deleted: {
       type: Boolean,
-      default: false
+      default: false,
     },
   },
-  { 
+  {
     timestamps: {
       createdAt: 'created_at',
       updatedAt: 'updated_at',

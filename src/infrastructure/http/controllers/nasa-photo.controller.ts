@@ -1,8 +1,9 @@
 import { Controller, Get } from '@nestjs/common';
+import { ApiOkResponse } from '@nestjs/swagger';
+
 import { NasaPhotoUseCase } from '@application/use-cases/nasa-photo.use-case';
 import { NasaPhoto } from '@domain/entities/nasa-photo.entity';
 import { GetNasaPhotoFindOneOkSchema } from '@infrastructure/http/docs/nasa-photo/ok.schema';
-import { ApiOkResponse } from '@nestjs/swagger';
 
 @Controller('nasa')
 export class NasaController {

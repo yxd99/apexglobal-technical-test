@@ -1,4 +1,4 @@
-import { ApiResponseOptions } from "@nestjs/swagger";
+import { ApiResponseOptions } from '@nestjs/swagger';
 
 export const GetNasaPhotoFindOneOkSchema: ApiResponseOptions = {
   description: 'Nasa photo has been found successfully',
@@ -22,7 +22,7 @@ export const GetNasaPhotoFindOneOkSchema: ApiResponseOptions = {
           hdurl: 'hdurl',
           url: 'url',
         },
-      }
-    }
-  }
+      },
+    },
+  },
 };

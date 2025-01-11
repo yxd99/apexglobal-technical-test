@@ -1,5 +1,6 @@
-import { MongooseModuleOptions } from "@nestjs/mongoose";
-import { envs } from "@config/envs";
+import { MongooseModuleOptions } from '@nestjs/mongoose';
+
+import { envs } from '@config/envs';
 
 export function getMongoConfig(): MongooseModuleOptions {
   return {
@@ -10,5 +11,5 @@ export function getMongoConfig(): MongooseModuleOptions {
     },
     dbName: envs.DB_NAME,
     uri: `mongodb://${envs.DB_HOST}:${envs.DB_PORT}`,
-  }
+  };
 }

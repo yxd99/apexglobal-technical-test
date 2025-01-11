@@ -1,4 +1,4 @@
-import { ApiResponseOptions } from "@nestjs/swagger";
+import { ApiResponseOptions } from '@nestjs/swagger';
 
 export const PostProductCreatedSchema: ApiResponseOptions = {
   description: 'Product has been created successfully',
@@ -24,9 +24,9 @@ export const PostProductCreatedSchema: ApiResponseOptions = {
           price: 100.2,
           stock: 10,
           created_at: '2025-01-10T21:13:14.865Z',
-          updated_at: '2025-01-10T21:13:14.865Z', 
+          updated_at: '2025-01-10T21:13:14.865Z',
         },
-      }
-    }
-  }
+      },
+    },
+  },
 };
