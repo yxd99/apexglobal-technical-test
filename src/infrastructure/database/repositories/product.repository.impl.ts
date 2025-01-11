@@ -5,7 +5,7 @@ import { Model } from 'mongoose';
 import { Product } from '@domain/entities/product.entity';
 import { ProductRepository } from '@domain/repositories/product.repository';
 import { ProductDocument } from '@infrastructure/database/models/product.model';
-import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product-pagination.dto';
 
 @Injectable()
 export class ProductRepositoryImpl implements ProductRepository {
@@ -33,7 +33,7 @@ export class ProductRepositoryImpl implements ProductRepository {
 
   async findOne(productId: string): Promise<Product | null> {
     const product = await this.ProductModel.findOne({
-      product_id: productId,
+      productId: productId,
       is_deleted: false,
     });
     return product ? this.toEntity(product) : null;
@@ -44,7 +44,7 @@ export class ProductRepositoryImpl implements ProductRepository {
     product: Partial<Product>,
   ): Promise<Product | null> {
     const updatedProduct = await this.ProductModel.findOneAndUpdate(
-      { product_id: productId },
+      { productId: productId },
       product,
       { new: true },
     );
@@ -53,14 +53,14 @@ export class ProductRepositoryImpl implements ProductRepository {
 
   async delete(productId: string): Promise<void> {
     await this.ProductModel.findOneAndUpdate(
-      { product_id: productId },
+      { productId: productId },
       { is_deleted: true },
     );
   }
 
   private toEntity(doc: ProductDocument): Product {
     return new Product({
-      productId: doc.product_id,
+      productId: doc.productId,
       name: doc.name,
       description: doc.description,
       price: doc.price,

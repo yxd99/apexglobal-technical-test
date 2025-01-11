@@ -10,7 +10,7 @@ import { Product } from '@domain/entities/product.entity';
 import { ProductDocument } from '@infrastructure/database/models/product.model';
 import { ProductRepositoryImpl } from '@infrastructure/database/repositories/product.repository.impl';
 import { ProductsController } from '@infrastructure/http/controllers/products.controller';
-import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product-pagination.dto';
 
 type MockedModel<T> = Partial<Record<keyof Model<T>, jest.Mock>> & {
   new: jest.MockedFunction<() => Partial<Record<string, jest.Mock>>>;
@@ -77,7 +77,7 @@ describe('ProductsController', () => {
     };
     mockProducts = Array(pagination.size)
       .fill({
-        product_id: '',
+        productId: '',
         name: 'Test Product',
         description: 'A test product',
         price: 100.0,
@@ -85,7 +85,7 @@ describe('ProductsController', () => {
         created_at: '2025-01-11T01:02:29.500Z',
         updated_at: '2025-01-11T01:02:29.500Z',
       })
-      .map((product, i) => ({ ...product, product_id: `${i + 1}` }));
+      .map((product, i) => ({ ...product, productId: `${i + 1}` }));
     const [firstProduct] = mockProducts;
     mockProduct = firstProduct;
     controller = module.get<ProductsController>(ProductsController);
@@ -106,7 +106,7 @@ describe('ProductsController', () => {
         await controller.create(mockProduct);
       } catch (error) {
         expect(error.message).toEqual(
-          `Product with id ${mockProduct.product_id} already exists`,
+          `Product with id ${mockProduct.productId} already exists`,
         );
       }
     });
@@ -138,17 +138,17 @@ describe('ProductsController', () => {
   describe('findOne', () => {
     it('should return a product', async () => {
       jest.spyOn(mockModel, 'findOne').mockResolvedValueOnce(mockProduct);
-      const result = await controller.findOne(mockProduct.product_id);
+      const result = await controller.findOne(mockProduct.productId);
       expect(result).toEqual(mockProduct);
     });
 
     it('should throw an error if product not found', async () => {
       jest.spyOn(mockModel, 'findOne').mockResolvedValue(null);
       try {
-        await controller.findOne(mockProduct.product_id);
+        await controller.findOne(mockProduct.productId);
       } catch (error) {
         expect(error.message).toEqual(
-          `Product with id ${mockProduct.product_id} not found`,
+          `Product with id ${mockProduct.productId} not found`,
         );
       }
     });
@@ -159,7 +159,7 @@ describe('ProductsController', () => {
       jest.spyOn(mockModel, 'findOne').mockResolvedValue(mockProduct);
       jest.spyOn(mockModel, 'findOneAndUpdate').mockResolvedValue(mockProduct);
       const result = await controller.update(
-        mockProduct.product_id,
+        mockProduct.productId,
         mockProduct,
       );
 
@@ -169,8 +169,8 @@ describe('ProductsController', () => {
     it('should throw an error if product not found', async () => {
       jest.spyOn(mockModel, 'findOne').mockResolvedValue(null);
       try {
-        await controller.update(mockProduct.product_id, {
-          product_id: mockProduct.product_id,
+        await controller.update(mockProduct.productId, {
+          productId: mockProduct.productId,
           name: 'Test Product',
           description: 'A test product',
           price: 100.0,
@@ -178,7 +178,7 @@ describe('ProductsController', () => {
         });
       } catch (error) {
         expect(error.message).toEqual(
-          `Product with id ${mockProduct.product_id} not found`,
+          `Product with id ${mockProduct.productId} not found`,
         );
       }
     });
@@ -187,17 +187,17 @@ describe('ProductsController', () => {
   describe('delete', () => {
     it('should delete a product', async () => {
       jest.spyOn(mockModel, 'findOne').mockResolvedValue(mockProduct);
-      const result = await controller.delete(mockProduct.product_id);
+      const result = await controller.delete(mockProduct.productId);
       expect(result).toBeUndefined();
     });
 
     it('should throw an error if product not found', async () => {
       jest.spyOn(mockModel, 'findOne').mockResolvedValue(null);
       try {
-        await controller.delete(mockProduct.product_id);
+        await controller.delete(mockProduct.productId);
       } catch (error) {
         expect(error.message).toEqual(
-          `Product with id ${mockProduct.product_id} not found`,
+          `Product with id ${mockProduct.productId} not found`,
         );
       }
     });

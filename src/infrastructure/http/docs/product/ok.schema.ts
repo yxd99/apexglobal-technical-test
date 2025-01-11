@@ -18,7 +18,7 @@ export const GetProductFindOneOkSchema: ApiResponseOptions = {
         type: 'object',
         description: 'Product data',
         example: {
-          product_id: '16',
+          productId: '16',
           name: 'product test',
           description: 'Description test',
           price: 100.2,
@@ -50,7 +50,7 @@ export const GetProductFindAllOkSchema: ApiResponseOptions = {
         description: 'Products data',
         example: [
           {
-            product_id: '16',
+            productId: '16',
             name: 'product test',
             description: 'Description test',
             price: 100.2,
@@ -59,7 +59,7 @@ export const GetProductFindAllOkSchema: ApiResponseOptions = {
             updated_at: '2025-01-10T21:13:14.865Z',
           },
           {
-            product_id: '17',
+            productId: '17',
             name: 'product test 2',
             description: 'Description test 2',
             price: 100.2,
@@ -91,7 +91,7 @@ export const PatchProductOkSchema: ApiResponseOptions = {
         type: 'object',
         description: 'Product data',
         example: {
-          product_id: '16',
+          productId: '16',
           name: 'product test',
           description: 'Description test',
           price: 100.2,

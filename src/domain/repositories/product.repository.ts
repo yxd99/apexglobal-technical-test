@@ -1,5 +1,5 @@
 import { Product } from '@domain/entities/product.entity';
-import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product-pagination.dto';
 
 export interface ProductRepository {
   create(product: Product): Promise<Product>;

@@ -33,7 +33,7 @@ import {
   PatchProductOkSchema,
 } from '@infrastructure/http/docs/product/ok.schema';
 import { CreateProductDto } from '@infrastructure/http/dto/products/create-product.dto';
-import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product-pagination.dto';
 import { UpdateProductDto } from '@infrastructure/http/dto/products/update-product.dto';
 
 @Controller('products')
@@ -46,15 +46,15 @@ export class ProductsController {
   @Post()
   async create(@Body() createProductDto: CreateProductDto) {
     const getProduct = await this.productUseCase.findOne(
-      createProductDto.product_id,
+      createProductDto.productId,
     );
     if (getProduct) {
       throw new BadRequestException(
-        `Product with id ${createProductDto.product_id} already exists`,
+        `Product with id ${createProductDto.productId} already exists`,
       );
     }
     const product = new Product({
-      productId: createProductDto.product_id,
+      productId: createProductDto.productId,
       name: createProductDto.name,
       description: createProductDto.description,
       price: createProductDto.price,
