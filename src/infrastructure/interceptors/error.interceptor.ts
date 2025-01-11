@@ -4,10 +4,13 @@ import { getReasonPhrase } from 'http-status-codes';
 
 @Catch()
 export class ErrorInterceptor implements ExceptionFilter {
-  catch(exception: any, host: ArgumentsHost) {
+  catch(exception, host: ArgumentsHost) {
     const response = host.switchToHttp().getResponse<Response>();
     const status = exception?.status || 500;
-    const message = exception?.response?.message || exception?.message || 'Internal Server Error';
+    const message =
+      exception?.response?.message ||
+      exception?.message ||
+      'Internal Server Error';
     const name = getReasonPhrase(status);
 
     response.status(status).json({

@@ -1,36 +1,66 @@
-import { Controller, Get, Post, Body, Param, NotFoundException, BadRequestException, Delete, Patch, Query } from '@nestjs/common';
-import { Product } from '@domain/entities/product.entity';
-import { CreateProductDto, ProductPaginationDto, UpdateProductDto } from '@infrastructure/http/dto/product.dto';
+import {
+  Controller,
+  Get,
+  Post,
+  Body,
+  Param,
+  NotFoundException,
+  BadRequestException,
+  Delete,
+  Patch,
+  Query,
+} from '@nestjs/common';
+import {
+  ApiBadRequestResponse,
+  ApiBody,
+  ApiCreatedResponse,
+  ApiNotFoundResponse,
+  ApiOkResponse,
+} from '@nestjs/swagger';
+
 import { ProductUseCase } from '@application/use-cases/product.use-case';
-import { ApiBadRequestResponse, ApiBody, ApiCreatedResponse, ApiNotFoundResponse, ApiOkResponse } from '@nestjs/swagger';
+import { Product } from '@domain/entities/product.entity';
+import {
+  PatchProductBadRequestSchema,
+  PostProductBadRequestSchema,
+} from '@infrastructure/http/docs/product/bad-request.schema';
 import { PostProductCreatedSchema } from '@infrastructure/http/docs/product/created.schema';
-import { PatchProductBadRequestSchema, PostProductBadRequestSchema } from '@infrastructure/http/docs/product/bad-request.schema';
-import { DeleteProductOkSchema, GetProductFindAllOkSchema, GetProductFindOneOkSchema, PatchProductOkSchema } from '@infrastructure/http/docs/product/ok.schema';
 import { ProductFindOneNotFoundSchema } from '@infrastructure/http/docs/product/not-found.schema';
+import {
+  DeleteProductOkSchema,
+  GetProductFindAllOkSchema,
+  GetProductFindOneOkSchema,
+  PatchProductOkSchema,
+} from '@infrastructure/http/docs/product/ok.schema';
+import { CreateProductDto } from '@infrastructure/http/dto/products/create-product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { UpdateProductDto } from '@infrastructure/http/dto/products/update-product.dto';
 
 @Controller('products')
 export class ProductsController {
-  constructor(
-    private readonly productUseCase: ProductUseCase,
-  ) {}
+  constructor(private readonly productUseCase: ProductUseCase) {}
 
   @ApiBody({ type: CreateProductDto })
   @ApiCreatedResponse(PostProductCreatedSchema)
   @ApiBadRequestResponse(PostProductBadRequestSchema)
   @Post()
   async create(@Body() createProductDto: CreateProductDto) {
-    const getProduct = await this.productUseCase.findOne(createProductDto.product_id);
+    const getProduct = await this.productUseCase.findOne(
+      createProductDto.product_id,
+    );
     if (getProduct) {
-      throw new BadRequestException(`Product with id ${createProductDto.product_id} already exists`);
+      throw new BadRequestException(
+        `Product with id ${createProductDto.product_id} already exists`,
+      );
     }
     const product = new Product({
-      product_id: createProductDto.product_id,
+      productId: createProductDto.product_id,
       name: createProductDto.name,
       description: createProductDto.description,
       price: createProductDto.price,
       stock: createProductDto.stock,
-      created_at: new Date(),
-      updated_at: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
     });
     return this.productUseCase.create(product);
   }
@@ -56,7 +86,10 @@ export class ProductsController {
   @ApiBadRequestResponse(PatchProductBadRequestSchema)
   @ApiNotFoundResponse(ProductFindOneNotFoundSchema)
   @Patch(':id')
-  async update(@Param('id') id: string, @Body() updateProductDto: UpdateProductDto) {
+  async update(
+    @Param('id') id: string,
+    @Body() updateProductDto: UpdateProductDto,
+  ) {
     const product = await this.productUseCase.findOne(id);
     if (!product) {
       throw new NotFoundException(`Product with id ${id} not found`);

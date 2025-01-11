@@ -1,8 +1,9 @@
 import { Module } from '@nestjs/common';
-import { HttpClientModule } from '@infrastructure/http/http-client.module';
-import { NasaPhotoService } from '@infrastructure/services/nasa.service';
+
 import { NasaPhotoUseCase } from '@application/use-cases/nasa-photo.use-case';
 import { NasaController } from '@infrastructure/http/controllers/nasa-photo.controller';
+import { HttpClientModule } from '@infrastructure/http/http-client.module';
+import { NasaPhotoService } from '@infrastructure/services/nasa.service';
 
 @Module({
   imports: [HttpClientModule],
@@ -14,11 +15,7 @@ import { NasaController } from '@infrastructure/http/controllers/nasa-photo.cont
     },
     NasaPhotoUseCase,
   ],
-  controllers: [
-    NasaController,
-  ],
-  exports: [
-    NasaPhotoUseCase,
-  ],
+  controllers: [NasaController],
+  exports: [NasaPhotoUseCase],
 })
 export class NasaPhotoModule {}

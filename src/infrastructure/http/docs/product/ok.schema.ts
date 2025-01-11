@@ -1,4 +1,4 @@
-import { ApiResponseOptions } from "@nestjs/swagger";
+import { ApiResponseOptions } from '@nestjs/swagger';
 
 export const GetProductFindOneOkSchema: ApiResponseOptions = {
   description: 'Product has been found successfully',
@@ -24,11 +24,11 @@ export const GetProductFindOneOkSchema: ApiResponseOptions = {
           price: 100.2,
           stock: 10,
           created_at: '2025-01-10T21:13:14.865Z',
-          updated_at: '2025-01-10T21:13:14.865Z', 
+          updated_at: '2025-01-10T21:13:14.865Z',
         },
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 export const GetProductFindAllOkSchema: ApiResponseOptions = {
@@ -56,7 +56,7 @@ export const GetProductFindAllOkSchema: ApiResponseOptions = {
             price: 100.2,
             stock: 10,
             created_at: '2025-01-10T21:13:14.865Z',
-            updated_at: '2025-01-10T21:13:14.865Z', 
+            updated_at: '2025-01-10T21:13:14.865Z',
           },
           {
             product_id: '17',
@@ -65,12 +65,12 @@ export const GetProductFindAllOkSchema: ApiResponseOptions = {
             price: 100.2,
             stock: 10,
             created_at: '2025-01-10T21:13:14.865Z',
-            updated_at: '2025-01-10T21:13:14.865Z', 
-          }
+            updated_at: '2025-01-10T21:13:14.865Z',
+          },
         ],
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 export const PatchProductOkSchema: ApiResponseOptions = {
@@ -97,11 +97,11 @@ export const PatchProductOkSchema: ApiResponseOptions = {
           price: 100.2,
           stock: 10,
           created_at: '2025-01-10T21:13:14.865Z',
-          updated_at: '2025-01-10T21:13:14.865Z', 
+          updated_at: '2025-01-10T21:13:14.865Z',
         },
-      }
-    }
-  }
+      },
+    },
+  },
 };
 
 export const DeleteProductOkSchema: ApiResponseOptions = {
@@ -122,7 +122,7 @@ export const DeleteProductOkSchema: ApiResponseOptions = {
         type: 'null',
         description: 'Null data',
         example: null,
-      }
-    }
-  }
+      },
+    },
+  },
 };

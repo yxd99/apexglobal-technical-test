@@ -17,6 +17,6 @@ export const ProductFindOneNotFoundSchema = {
         description: 'Error data',
         example: 'Product with id 123 not found',
       },
-    }
-  }
+    },
+  },
 };
