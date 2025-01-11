@@ -8,7 +8,10 @@ const envSchema = joi
       .valid('development', 'production', 'test')
       .default('development'),
     PORT: joi.number().default(3000),
-    DB_CONNECTION_SCHEMA: joi.string().default('mongodb'),
+    DB_CONNECTION_SCHEMA: joi
+      .string()
+      .valid('mongodb', 'mongodb+srv')
+      .default('mongodb'),
     DB_HOST: joi.string().default('mongodb://localhost'),
     DB_PORT: joi.number().default(27017).required(),
     DB_USER: joi.string(),
