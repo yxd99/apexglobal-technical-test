@@ -1,99 +1,157 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# ApexGlobal Technical Test Repository
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+---
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## **Introduction** 🌟
 
-## Description
+The **ApexGlobal Technical Test** project is a robust backend application built using the **NestJS Framework**. This application implements clean architecture principles to ensure modularity, scalability, and maintainability. It includes features like **Product Management** and integration with **NASA's Photo of the Day API**.
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+The repository demonstrates a well-structured approach to software development by organizing the code into distinct layers such as **Application**, **Domain**, **Infrastructure**, and **Interfaces**. It leverages **MongoDB** as the database, **Swagger** for API documentation, and **Docker** for containerization.
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## **Usage** 🛠️
 
-## Compile and run the project
+1. **API Documentation**:
+   - Swagger is integrated for API documentation.
+   - Access the Swagger UI at `/api` once the application is running.
 
-```bash
-# development
-$ npm run start
+2. **Endpoints**:
+   - **Products**:
+     - Create, Read, Update, Delete (CRUD) operations for managing products.
+   - **NASA Photo of the Day**:
+     - Fetch the daily photo from NASA's API.
 
-# watch mode
-$ npm run start:dev
+3. **Testing**:
+   - Unit and end-to-end tests are implemented using **Jest**.
 
-# production mode
-$ npm run start:prod
-```
+---
 
-## Run tests
+## **Features** ✨
 
-```bash
-# unit tests
-$ npm run test
+- **Product Management**:
+  - CRUD operations for products with validation.
+  - Pagination support for product listings.
+  
+- **NASA Photo of the Day Integration**:
+  - Fetches photo data from NASA's API.
+  
+- **Clean Architecture**:
+  - Implements separation of concerns with clearly defined layers.
+  
+- **Swagger Integration**:
+  - Interactive API documentation.
+  
+- **Environment Configuration**:
+  - Manages sensitive configurations using `.env` files and validation.
+  
+- **Error Handling**:
+  - Centralized error handling with custom interceptors.
 
-# e2e tests
-$ npm run test:e2e
+- **Dockerized Deployment**:
+  - Docker support for containerized application deployment.
 
-# test coverage
-$ npm run test:cov
-```
+---
 
-## Deployment
+## **Configuration** ⚙️
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
+1. **Environment Variables**:
+   - Set up the `.env` file in the root directory. Example variables:
+     - `NODE_ENV`: Application environment (development, production, test).
+     - `PORT`: The port on which the application runs.
+     - `DB_CONNECTION_SCHEMA`: Database schema (e.g., `mongodb`).
+     - `DB_HOST`: Database host URL.
+     - `DB_PORT`: Port for the database.
+     - `DB_USER` and `DB_PASSWORD`: Credentials for the database.
+     - `NASA_ENDPOINT`: Endpoint URL for NASA API.
+     - `NASA_API_KEY`: API key for NASA's service.
 
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+2. **Swagger Configuration**:
+   - Defined in `src/infrastructure/config/swagger.ts` and `api-info.ts`.
+   - Customize API title, description, and version.
+   
+3. **Docker Configuration**:
+   - `docker-compose.yml` orchestrates the MongoDB and application containers.
+   - `Dockerfile` builds the application container.
 
-```bash
-$ npm install -g mau
-$ mau deploy
-```
+---
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+## **Requirements** 📋
 
-## Resources
+- **Node.js**: Version 20 or higher.
+- **NestJS**: Framework for building scalable applications.
+- **MongoDB**: NoSQL database.
+- **Docker**: For containerized deployment.
+- **Jest**: Testing framework.
 
-Check out a few resources that may come in handy when working with NestJS:
+---
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## **Installation** 🚀
 
-## Support
+Follow the steps below to set up the application:
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/yxd99/apexglobal-technical-test.git
+   cd apexglobal-technical-test
+   ```
 
-## Stay in touch
+2. **Install Dependencies**:
+   ```bash
+   npm install
+   ```
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+3. **Set Up Environment Variables**:
+   - Create a `.env` file and populate it with the required variables.
 
-## License
+4. **Run the Application Locally**:
+   ```bash
+   npm run start:dev
+   ```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+5. **Run with Docker**:
+   - Build and start using Docker Compose:
+     ```bash
+     docker-compose up --build
+     ```
+
+6. **Run Tests**:
+   - Unit Tests:
+     ```bash
+     npm run test
+     ```
+   - End-to-End Tests:
+     ```bash
+     npm run test:e2e
+     ```
+
+---
+
+## **Architectural Decisions** 🏗️
+
+The project adheres to **Clean Architecture** principles, as reflected in the folder structure:
+
+1. **Domain Layer**:
+   - Contains core business logic and entities.
+   - Example: `src/domain/entities/product.entity.ts`.
+
+2. **Application Layer**:
+   - Implements use cases and application-specific logic.
+   - Example: `src/application/use-cases/product.use-case.ts`.
+
+3. **Infrastructure Layer**:
+   - Handles database interactions, external API calls, and framework-specific configurations.
+   - Example:
+     - Repositories: `src/infrastructure/database/repositories/product.repository.impl.ts`.
+     - Services: `src/infrastructure/services/nasa.service.ts`.
+     - Configurations: `src/infrastructure/config`.
+
+4. **Interfaces Layer**:
+   - Defines DTOs and controllers for handling HTTP requests.
+   - Example: `src/infrastructure/http/dto/products/create-product.dto.ts`.
+
+5. **Main Application**:
+   - Initializes the modules and application-level configurations.
+   - Example: `src/app.module.ts`.
+
+By structuring the code in this manner, the project ensures separation of concerns, thereby enhancing testability, maintainability, and scalability.
