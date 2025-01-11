@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1736566996608" clover="3.2.0">
+  <project timestamp="1736566996608" name="All files">
+    <metrics statements="106" coveredstatements="106" conditionals="6" coveredconditionals="6" methods="23" coveredmethods="23" elements="135" coveredelements="135" complexity="0" loc="106" ncloc="106" packages="8" files="13" classes="13"/>
+    <package name="application.use-cases">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <file name="product.use-case.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/application/use-cases/product.use-case.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="15" count="15" type="stmt"/>
+        <line num="21" count="2" type="stmt"/>
+        <line num="25" count="22" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="domain.entities">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="product.entity.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/domain/entities/product.entity.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="35" count="40" type="stmt"/>
+        <line num="36" count="40" type="stmt"/>
+        <line num="37" count="40" type="stmt"/>
+        <line num="38" count="40" type="stmt"/>
+        <line num="39" count="40" type="stmt"/>
+        <line num="40" count="40" type="stmt"/>
+        <line num="41" count="40" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.database.models">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="product.model.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/database/models/product.model.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.database.repositories">
+      <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+      <file name="product.repository.impl.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/database/repositories/product.repository.impl.ts">
+        <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="7" coveredmethods="7"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="14" type="stmt"/>
+        <line num="18" count="15" type="stmt"/>
+        <line num="19" count="15" type="stmt"/>
+        <line num="20" count="15" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="35" count="22" type="stmt"/>
+        <line num="39" count="22" type="cond" truecount="2" falsecount="0"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="62" count="25" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.controllers">
+      <metrics statements="36" coveredstatements="36" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+      <file name="products.controller.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/controllers/products.controller.ts">
+        <metrics statements="36" coveredstatements="36" conditionals="4" coveredconditionals="4" methods="6" coveredmethods="6"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="14" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="16" type="stmt"/>
+        <line num="51" count="16" type="cond" truecount="1" falsecount="0"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="56" count="15" type="stmt"/>
+        <line num="65" count="15" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="77" count="1" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="79" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="80" count="1" type="stmt"/>
+        <line num="82" count="1" type="stmt"/>
+        <line num="89" count="1" type="stmt"/>
+        <line num="93" count="2" type="stmt"/>
+        <line num="94" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="95" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+        <line num="103" count="1" type="stmt"/>
+        <line num="104" count="2" type="stmt"/>
+        <line num="105" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="106" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.docs.product">
+      <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="bad-request.schema.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/docs/product/bad-request.schema.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="62" count="1" type="stmt"/>
+      </file>
+      <file name="created.schema.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/docs/product/created.schema.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+      </file>
+      <file name="not-found.schema.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/docs/product/not-found.schema.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+      </file>
+      <file name="ok.schema.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/docs/product/ok.schema.ts">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+        <line num="76" count="1" type="stmt"/>
+        <line num="107" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.http.dto.products">
+      <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="create-product.dto.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/dto/products/create-product.dto.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+      <file name="product-pagination.dto.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/dto/products/product-pagination.dto.ts">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+      </file>
+      <file name="update-product.dto.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/http/dto/products/update-product.dto.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="infrastructure.modules">
+      <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="products.module.ts" path="/home/yxd/projects/nest/apexglobal-technical-test/src/infrastructure/modules/products.module.ts">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
