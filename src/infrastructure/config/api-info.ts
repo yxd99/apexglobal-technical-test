@@ -7,7 +7,7 @@ export const PREFIX = 'api';
 export const { PORT } = envs;
 export const SERVERS = [
   {
-    host: `http://localhost:${PORT}/api`,
+    host: `https://apexglobal-technical-test.onrender.com/api`,
     description: 'Dev',
   },
 ];
