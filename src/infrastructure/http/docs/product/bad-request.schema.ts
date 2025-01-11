@@ -21,8 +21,8 @@ export const PostProductBadRequestSchema: ApiResponseOptions = {
             type: 'array',
             description: 'Error data',
             example: [
-              'product_id should not be empty',
-              'product_id must be a string',
+              'productId should not be empty',
+              'productId must be a string',
               'name should not be empty',
               'name must be a string',
               'description must be a string',
@@ -77,8 +77,8 @@ export const PatchProductBadRequestSchema: ApiResponseOptions = {
         type: 'array',
         description: 'Error data',
         example: [
-          'product_id should not be empty',
-          'product_id must be a string',
+          'productId should not be empty',
+          'productId must be a string',
           'name should not be empty',
           'name must be a string',
           'description must be a string',

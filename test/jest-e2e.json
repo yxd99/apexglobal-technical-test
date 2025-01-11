@@ -16,6 +16,7 @@
   },
   "coverageDirectory": "<rootDir>/coverage/e2e",
   "modulePathIgnorePatterns": [
-    "<rootDir>/dist/"
+    "<rootDir>/dist/",
+    "<rootDir>/src/infrastructure/http/docs"
   ]
 }

@@ -2,7 +2,7 @@ import { Schema, Document } from 'mongoose';
 
 export const ProductSchema = new Schema(
   {
-    product_id: {
+    productId: {
       type: String,
       required: true,
       unique: true,
@@ -37,7 +37,7 @@ export const ProductSchema = new Schema(
 );
 
 export interface ProductDocument extends Document {
-  product_id: string;
+  productId: string;
   name: string;
   description: string;
   price: number;

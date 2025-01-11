@@ -7,20 +7,20 @@ export class ProductPaginationDto {
     default: 1,
     required: false,
   })
+  @Type(() => Number)
   @IsNumber()
   @IsPositive()
   @IsOptional()
   @Min(1)
-  @Type(() => Number)
   page: number = 1;
 
   @ApiProperty({
     default: 15,
     required: false,
   })
+  @Type(() => Number)
   @IsNumber()
   @IsPositive()
   @Min(1)
-  @Type(() => Number)
   size: number = 15;
 }

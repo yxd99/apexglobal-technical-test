@@ -11,7 +11,7 @@ export class CreateProductDto {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  product_id: string;
+  productId: string;
 
   @ApiProperty()
   @IsString()

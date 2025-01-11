@@ -9,7 +9,7 @@ interface ProductProps {
 }
 
 export class Product {
-  public product_id: string;
+  public productId: string;
 
   public name: string;
 
@@ -32,7 +32,7 @@ export class Product {
     createdAt,
     updatedAt,
   }: ProductProps) {
-    this.product_id = productId;
+    this.productId = productId;
     this.name = name;
     this.description = description;
     this.price = price;

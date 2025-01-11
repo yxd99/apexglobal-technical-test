@@ -2,7 +2,7 @@ import { Inject } from '@nestjs/common';
 
 import { Product } from '@domain/entities/product.entity';
 import { ProductRepository } from '@domain/repositories/product.repository';
-import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product-pagination.dto';
 import { UpdateProductDto } from '@infrastructure/http/dto/products/update-product.dto';
 
 export class ProductUseCase {

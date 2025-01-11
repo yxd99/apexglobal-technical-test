@@ -18,7 +18,7 @@ export const PostProductCreatedSchema: ApiResponseOptions = {
         type: 'object',
         description: 'Product data',
         example: {
-          product_id: '16',
+          productId: '16',
           name: 'product test',
           description: 'Description test',
           price: 100.2,

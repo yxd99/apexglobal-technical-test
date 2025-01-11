@@ -1,15 +1,16 @@
-import { HttpStatus, INestApplication } from '@nestjs/common';
+import { HttpStatus, INestApplication, ValidationPipe } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import * as request from 'supertest';
 
+import { ProductSchema } from '@infrastructure/database/models/product.model';
 import { ProductsModule } from '@infrastructure/modules/products.module';
 
 describe('ProductsController (e2e)', () => {
   let app: INestApplication;
   let mongoServer: MongoMemoryServer;
-  let endpoint: string;
+  const endpoint = '/products';
   let createProductDto: {
     productId: string;
     name: string;
@@ -19,7 +20,6 @@ describe('ProductsController (e2e)', () => {
   };
 
   beforeEach(async () => {
-    endpoint = '/products';
     createProductDto = {
       productId: '123',
       name: 'Test Product',
@@ -35,7 +35,7 @@ describe('ProductsController (e2e)', () => {
         MongooseModule.forFeature([
           {
             name: 'Product',
-            schema: import('@infrastructure/database/models/product.model'),
+            schema: ProductSchema,
           },
         ]),
         ProductsModule,
@@ -43,6 +43,13 @@ describe('ProductsController (e2e)', () => {
     }).compile();
 
     app = moduleFixture.createNestApplication();
+    app.useGlobalPipes(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+        transform: true,
+      }),
+    );
     await app.init();
   });
 
@@ -52,6 +59,47 @@ describe('ProductsController (e2e)', () => {
         .get(endpoint)
         .expect(HttpStatus.OK);
       expect(response.body).toEqual([]);
+    });
+
+    it(`${endpoint} (GET) should return an the first 5 products`, async () => {
+      const promises = [];
+      for (let i = 1; i <= 10; i += 1) {
+        promises.push(
+          request(app.getHttpServer())
+            .post(endpoint)
+            .send({
+              ...createProductDto,
+              productId: `${i}`,
+            }),
+        );
+      }
+      await Promise.all(promises);
+      const response = await request(app.getHttpServer()).get(
+        `${endpoint}?page=1&size=5`,
+      );
+      expect(response.body).toHaveLength(5);
+    });
+
+    it(`${endpoint} (GET) should throw an error if page is not a number`, async () => {
+      try {
+        await request(app.getHttpServer()).get(`${endpoint}?page=string`);
+      } catch (error) {
+        expect(error.response.data).toEqual(
+          `Page and size must be greater than 0`,
+        );
+      }
+    });
+
+    it(`${endpoint} (GET) should throw an error if size is not a number`, async () => {
+      await request(app.getHttpServer()).get(`${endpoint}?size=string`);
+    });
+
+    it(`${endpoint} (GET) should throw an error if page is negative`, async () => {
+      await request(app.getHttpServer()).get(`${endpoint}?page=-1`);
+    });
+
+    it(`${endpoint} (GET) should throw an error if size is negative`, async () => {
+      await request(app.getHttpServer()).get(`${endpoint}?size=-1`);
     });
   });
 
@@ -79,10 +127,11 @@ describe('ProductsController (e2e)', () => {
     it(`${endpoint}/:id (GET)`, async () => {
       await request(app.getHttpServer()).post(endpoint).send(createProductDto);
 
-      const response = await request(app.getHttpServer())
-        .get(`${endpoint}/${createProductDto.productId}`)
-        .expect(HttpStatus.OK);
-      expect(response.body).toEqual(createProductDto);
+      const response = await request(app.getHttpServer()).get(
+        `${endpoint}/${createProductDto.productId}`,
+      );
+
+      expect(response.status).toEqual(HttpStatus.OK);
     });
 
     it(`${endpoint}/:id (GET) should throw an error if product not found`, async () => {

@@ -1,7 +1,7 @@
 import { ProductUseCase } from '@application/use-cases/product.use-case';
 import { Product } from '@domain/entities/product.entity';
 import { productRepositoryMock } from '@domain/repositories/__mocks__/product.repository.mock';
-import { ProductPaginationDto } from '@infrastructure/http/dto/products/product.dto';
+import { ProductPaginationDto } from '@infrastructure/http/dto/products/product-pagination.dto';
 
 describe('ProductUseCase', () => {
   let productUseCase: ProductUseCase;
@@ -17,7 +17,7 @@ describe('ProductUseCase', () => {
     };
     mockProducts = Array(pagination.size)
       .fill({
-        product_id: '',
+        productId: '',
         name: 'Test Product',
         description: 'A test product',
         price: 100.0,
@@ -25,7 +25,7 @@ describe('ProductUseCase', () => {
         created_at: '2025-01-11T01:02:29.500Z',
         updated_at: '2025-01-11T01:02:29.500Z',
       })
-      .map((product, i) => ({ ...product, product_id: `${i + 1}` }));
+      .map((product, i) => ({ ...product, productId: `${i + 1}` }));
     const [firstProduct] = mockProducts;
     mockProduct = firstProduct;
   });
@@ -49,7 +49,7 @@ describe('ProductUseCase', () => {
         await productUseCase.create(mockProduct);
       } catch (error) {
         expect(error.message).toEqual(
-          `Product with id ${mockProduct.product_id} already exists`,
+          `Product with id ${mockProduct.productId} already exists`,
         );
       }
       expect(productRepositoryMock.create).toHaveBeenCalledWith(mockProduct);
@@ -112,7 +112,7 @@ describe('ProductUseCase', () => {
       jest
         .spyOn(productRepositoryMock, 'findOne')
         .mockResolvedValue(mockProduct);
-      const result = await productUseCase.findOne(mockProduct.product_id);
+      const result = await productUseCase.findOne(mockProduct.productId);
       expect(result).toEqual(mockProduct);
     });
 
@@ -130,7 +130,7 @@ describe('ProductUseCase', () => {
         .spyOn(productRepositoryMock, 'update')
         .mockResolvedValue(mockProduct);
       const result = await productUseCase.update(
-        mockProduct.product_id,
+        mockProduct.productId,
         mockProduct,
       );
       expect(result).toEqual(mockProduct);
@@ -139,7 +139,7 @@ describe('ProductUseCase', () => {
     it('should return null if product not found', async () => {
       jest.spyOn(productRepositoryMock, 'update').mockResolvedValue(null);
       const result = await productUseCase.update('123', {
-        product_id: '123',
+        productId: '123',
         name: 'Test Product',
         description: 'A test product',
         price: 100.0,
